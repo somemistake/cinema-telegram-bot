@@ -1,0 +1,17 @@
+application:
+  kinopoisk-api:
+    host: localhost
+    port: 8083
+  bot:
+    token: 5807621194:AAGk0KYs_mpJag6vR6NE7F0A6_etqjMiY-c
+    username: KpCinemaBot
+
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: rootuser
+      password: rootpass
+      database: cinema-bot
+      port: 27017
+      host: localhost

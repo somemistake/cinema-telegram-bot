@@ -1,0 +1,35 @@
+package ru.somemistake.cinema.handler;
+
+import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import ru.somemistake.cinema.state.BotState;
+import ru.somemistake.cinema.state.ChatCache;
+import ru.somemistake.cinema.state.OperationState;
+
+import java.util.List;
+
+@Component
+public class ActorMessageHandler implements MessageHandler {
+
+    private final ChatCache cache;
+
+    public ActorMessageHandler(ChatCache cache) {
+        this.cache = cache;
+    }
+
+    @Override
+    public BotState state() {
+        return BotState.ADD_ACTOR_PARAMETER;
+    }
+
+    @Override
+    public List<PartialBotApiMethod<Message>> handleMessage(Message message) {
+        cache.saveChatOperationState(message.getChatId(), OperationState.ACTOR_PARAMETER);
+        cache.setChatBotState(message.getChatId(), BotState.PROCESS_MESSAGE_PARAMETERS);
+
+        String text = "Введите актера(ов), например:\nДуэйн Джонсон\nДуэйн Джонсон, Кевин Харт, ...";
+        return List.of(SendMessage.builder().chatId(message.getChatId()).text(text).build());
+    }
+}

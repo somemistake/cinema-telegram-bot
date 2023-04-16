@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package ru.somemistake.cinema.grpc;
+
+message MovieRequest {
+  string parameters = 1;
+  int64 titleId = 2;
+}
+
+message MovieResponse {
+  repeated Movie movies = 1;
+}
+
+message Movie {
+  string type = 1;
+  string name = 2;
+  string description = 3;
+  double ratingKp = 4;
+  int64 duration = 5;
+  int64 premiereYear = 6;
+  repeated string countries = 7;
+  repeated string genres = 8;
+  repeated string actors = 9;
+  repeated Trailer trailers = 10;
+  string posterUrl = 11;
+  int64 titleId = 12;
+}
+
+message Trailer {
+  string site = 1;
+  string url = 2;
+}
+
+service KinopoiskService {
+  rpc getRandomMovie(MovieRequest) returns (MovieResponse);
+  rpc getMoviesByParameters(MovieRequest) returns (MovieResponse);
+  rpc getMovieById(MovieRequest) returns (MovieResponse);
+}
