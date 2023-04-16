@@ -2,7 +2,7 @@ application:
   server:
     port: 8083
   kinopoisk:
-    token: 7MYRJCK-Z54MYAC-JRG8MB2-QM2FMF1
+    token:
     endpoints:
       movies: https://api.kinopoisk.dev/v1/movie?selectFields=id&selectFields=type&selectFields=name&selectFields=description&selectFields=shortDescription&selectFields=rating.kp&selectFields=movieLength&selectFields=year&selectFields=videos.trailers.url&selectFields=videos.trailers.site&selectFields=poster.url&selectFields=countries.name&selectFields=genres.name&selectFields=persons.name&sortField=rating.kp&sortType=-1
       random: https://api.kinopoisk.dev/v1/movie/random

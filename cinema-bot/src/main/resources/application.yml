@@ -3,8 +3,8 @@ application:
     host: localhost
     port: 8083
   bot:
-    token: 5807621194:AAGk0KYs_mpJag6vR6NE7F0A6_etqjMiY-c
-    username: KpCinemaBot
+    token:
+    username:
 
 spring:
   data:
